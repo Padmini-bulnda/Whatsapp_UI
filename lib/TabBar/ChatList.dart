@@ -1,10 +1,18 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui/View/ChatScreen.dart';
 
 import '../model/Chat_Data.dart';
 
-class ChatList extends StatelessWidget {
+class ChatList extends StatefulWidget {
   const ChatList({super.key});
 
+  @override
+  State<ChatList> createState() => _ChatListState();
+}
+
+class _ChatListState extends State<ChatList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,6 +25,15 @@ class ChatList extends StatelessWidget {
                     height: 10.0,
                   ),
                   ListTile(
+                    onTap: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChatScreen(
+                                    user: dummyData[index].name,
+                                    profile: dummyData[index].profilepic,
+                                  )))
+                    },
                     leading: CircleAvatar(
                       radius: 20,
                       backgroundColor: Colors.grey,
